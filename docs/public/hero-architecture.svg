@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.7"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.6"/>
+    </linearGradient>
+  </defs>
+  <rect x="60" y="40" width="280" height="48" rx="8" fill="url(#g1)" opacity="0.85"/>
+  <text x="200" y="70" text-anchor="middle" fill="white" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Planning &amp; Knowledge</text>
+  <rect x="60" y="100" width="280" height="48" rx="8" fill="url(#g1)" opacity="0.75"/>
+  <text x="200" y="130" text-anchor="middle" fill="white" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Build &amp; Verify</text>
+  <rect x="60" y="160" width="280" height="48" rx="8" fill="url(#g2)" opacity="0.75"/>
+  <text x="200" y="190" text-anchor="middle" fill="white" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Release on AWS</text>
+  <rect x="60" y="220" width="280" height="48" rx="8" fill="url(#g2)" opacity="0.85"/>
+  <text x="200" y="250" text-anchor="middle" fill="white" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Observe &amp; Learn</text>
+  <path d="M200 88v12M200 148v12M200 208v12" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+  <path d="M320 264c40 20 40 60 0 80M80 264c-40 20-40 60 0 80" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4 4" fill="none" opacity="0.6"/>
+  <text x="200" y="370" text-anchor="middle" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">feedback loop</text>
+</svg>
