@@ -6,7 +6,7 @@
 
 | Where | Link |
 |-------|------|
-| **GitHub Pages (recommended)** | **https://\<your-org\>.github.io/AI-architecture/** |
+| **GitHub Pages (recommended)** | **https://lukewilk.github.io/AI-architecture/** |
 | Local dev | `npm install && npm run docs:dev` → http://localhost:5173 |
 
 The GitHub Pages site includes **search**, **sidebar navigation**, **Mermaid diagrams**, and **deep-dive outlines** on every page.
