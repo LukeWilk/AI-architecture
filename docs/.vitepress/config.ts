@@ -52,9 +52,9 @@ export default withMermaid(
     },
 
     themeConfig: {
-      // Prefix logo with the computed base so the image resolves when the
-      // site is published under a repo subpath on GitHub Pages.
-      logo: { src: `${base}logo.svg`, alt: 'Enterprise AI Delivery' },
+      // Use a relative logo path (no leading slash). VitePress will prefix
+      // the configured `base` when rendering links, preventing double-prefixing.
+      logo: { src: 'logo.svg', alt: 'Enterprise AI Delivery' },
       siteTitle: 'Enterprise AI Delivery',
 
       editLink: {
