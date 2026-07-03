@@ -67,7 +67,7 @@ Docs preview & build
   BASE_PATH=/AI-architecture/ npm run docs:build
   # serve docs/.vitepress/dist for preview
   ```
-- CI: `.github/workflows/deploy-docs.yml` sets `BASE_PATH: /${{ github.event.repository.name }}/` and uploads `docs/.vitepress/dist` to Pages.
+- CI: `.github/workflows/deploy-docs.yml` sets `BASE_PATH` to the repository subpath (for example `/AI-architecture/`) using the GitHub Actions expression `github.event.repository.name`, and uploads `docs/.vitepress/dist` to Pages.
 
 Top 3 actionables
 1. Read `HOW-TO-USE.md` then `adoption-roadmap.md` — pick a 1–2 week pilot.
@@ -83,4 +83,5 @@ Where to read in 30–60 min
 
 Quick contact items
 - Want this committed as `docs/TLDR.md` and opened as a PR? (I will create branch, commit, push, and open PR.)
+
 
