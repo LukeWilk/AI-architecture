@@ -31,7 +31,10 @@ export default withMermaid(
       ['meta', { name: 'theme-color', content: '#2563eb' }],
       ['meta', { property: 'og:type', content: 'website' }],
       ['meta', { property: 'og:site_name', content: 'Enterprise AI Delivery' }],
-      ['link', { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
+      // Use the configured `base` so asset links work when the site is hosted
+      // under a repository subpath (GitHub Pages). `base` includes a trailing
+      // slash (e.g. '/AI-architecture/'), so concatenate asset paths with it.
+      ['link', { rel: 'icon', href: `${base}favicon.svg`, type: 'image/svg+xml' }],
       ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
       ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
     ],
@@ -49,7 +52,9 @@ export default withMermaid(
     },
 
     themeConfig: {
-      logo: { src: '/logo.svg', alt: 'Enterprise AI Delivery' },
+      // Prefix logo with the computed base so the image resolves when the
+      // site is published under a repo subpath on GitHub Pages.
+      logo: { src: `${base}logo.svg`, alt: 'Enterprise AI Delivery' },
       siteTitle: 'Enterprise AI Delivery',
 
       editLink: {
