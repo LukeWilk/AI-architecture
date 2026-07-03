@@ -37,6 +37,18 @@ jobs:
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
 
+      - name: Normalize directory index files
+        # Some static hosts (or downstream tooling) expect an index.html per
+        # directory. VitePress emits README.html for directory pages; copy
+        # README.html -> index.html so URLs like /guides/ and /sops/ resolve
+        # correctly when served from GitHub Pages.
+        run: |
+          set -euo pipefail
+          find docs/.vitepress/dist -type f -name 'README.html' -print0 | while IFS= read -r -d '' f; do
+            dir="$(dirname "$f")"
+            cp -f "$f" "$dir/index.html"
+          done
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

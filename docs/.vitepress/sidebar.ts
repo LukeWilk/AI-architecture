@@ -68,63 +68,74 @@ const sopItems: DefaultTheme.SidebarItem[] = [
   { text: 'SOP-012 Exception handling', link: '/sops/SOP-012-exception-handling' },
 ]
 
+// Build the full site sidebar once and reuse it for section pages so the
+// left-hand navigation shows the complete site hierarchy regardless of the
+// active section. VitePress uses the matching prefix to select the sidebar
+// entries; providing the same full sidebar for section prefixes keeps
+// navigation consistent across the site.
+const fullSidebar: DefaultTheme.Sidebar = [
+  {
+    text: 'Getting started',
+    collapsed: false,
+    items: [
+      { text: 'Home', link: '/' },
+      { text: 'How to use', link: '/HOW-TO-USE' },
+      { text: 'Adoption roadmap', link: '/adoption-roadmap' },
+      { text: 'Documentation map', link: '/README' },
+      { text: 'Glossary', link: '/glossary' },
+    ],
+  },
+  { text: 'Delivery lifecycle', collapsed: false, items: lifecycleItems },
+  { text: 'Content pillars', collapsed: true, items: pillarItems },
+  { text: 'By role', collapsed: true, items: roleItems },
+  {
+    text: 'Architecture',
+    collapsed: false,
+    items: [
+      { text: 'Architecture overview', link: '/ARCHITECTURE' },
+      { text: 'Governance model', link: '/GOVERNANCE' },
+    ],
+  },
+  {
+    text: 'Decision guides',
+    collapsed: true,
+    items: [{ text: 'All guides (16)', link: '/guides/' }, ...guideItems.slice(1)],
+  },
+  {
+    text: 'Topic deep dives',
+    collapsed: true,
+    items: [
+      { text: 'Planning & ADR', link: '/planning-and-adr' },
+      { text: 'Developer workflow', link: '/developer-workflow' },
+      { text: 'QA & guardrails', link: '/qa-guardrails' },
+      { text: 'CI/CD & observability', link: '/cicd-observability' },
+      { text: 'Data governance', link: '/data-governance' },
+      { text: 'Identity & access', link: '/identity-access-secrets' },
+      { text: 'AI toolkit catalog', link: '/ai-toolkit' },
+      { text: 'Operations overview', link: '/operations-observability' },
+    ],
+  },
+  {
+    text: 'Operating model',
+    collapsed: true,
+    items: [
+      { text: 'Process overview', link: '/processes/overview' },
+      { text: 'SOP index', link: '/sops/' },
+    ],
+  },
+]
+
 export const sidebar: DefaultTheme.SidebarMulti = {
-  '/lifecycle/': [{ text: 'Delivery lifecycle', collapsed: false, items: lifecycleItems }],
-  '/pillars/': [{ text: 'Content pillars', collapsed: false, items: pillarItems }],
-  '/perspectives/': [{ text: 'Role perspectives', collapsed: false, items: roleItems }],
-  '/guides/': [{ text: 'Decision guides', collapsed: false, items: guideItems }],
-  '/sops/': [{ text: 'Standard operating procedures', collapsed: false, items: sopItems }],
-  '/': [
-    {
-      text: 'Getting started',
-      collapsed: false,
-      items: [
-        { text: 'Home', link: '/' },
-        { text: 'How to use', link: '/HOW-TO-USE' },
-        { text: 'Adoption roadmap', link: '/adoption-roadmap' },
-        { text: 'Documentation map', link: '/README' },
-        { text: 'Glossary', link: '/glossary' },
-      ],
-    },
-    { text: 'Delivery lifecycle', collapsed: false, items: lifecycleItems },
-    { text: 'Content pillars', collapsed: true, items: pillarItems },
-    { text: 'By role', collapsed: true, items: roleItems },
-    {
-      text: 'Architecture',
-      collapsed: false,
-      items: [
-        { text: 'Architecture overview', link: '/ARCHITECTURE' },
-        { text: 'Governance model', link: '/GOVERNANCE' },
-      ],
-    },
-    {
-      text: 'Decision guides',
-      collapsed: true,
-      items: [{ text: 'All guides (16)', link: '/guides/' }, ...guideItems.slice(1)],
-    },
-    {
-      text: 'Topic deep dives',
-      collapsed: true,
-      items: [
-        { text: 'Planning & ADR', link: '/planning-and-adr' },
-        { text: 'Developer workflow', link: '/developer-workflow' },
-        { text: 'QA & guardrails', link: '/qa-guardrails' },
-        { text: 'CI/CD & observability', link: '/cicd-observability' },
-        { text: 'Data governance', link: '/data-governance' },
-              { text: 'Identity & access', link: '/identity-access-secrets' },
-              { text: 'AI toolkit catalog', link: '/ai-toolkit' },
-              { text: 'Operations overview', link: '/operations-observability' },
-      ],
-    },
-    {
-      text: 'Operating model',
-      collapsed: true,
-      items: [
-        { text: 'Process overview', link: '/processes/overview' },
-        { text: 'SOP index', link: '/sops/' },
-      ],
-    },
-  ],
+  // Use the full site sidebar for each of these top-level prefixes so the
+  // left navigation remains consistent (instead of showing only the local
+  // group's links).
+  '/lifecycle/': fullSidebar,
+  '/pillars/': fullSidebar,
+  '/perspectives/': fullSidebar,
+  '/guides/': fullSidebar,
+  '/sops/': fullSidebar,
+  // Keep the root sidebar as the same full sidebar
+  '/': fullSidebar,
 }
 
 export const nav: DefaultTheme.NavItem[] = [
