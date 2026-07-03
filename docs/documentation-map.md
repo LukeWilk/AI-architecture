@@ -76,7 +76,7 @@ Browse by **role**, **lifecycle phase**, **pillar**, or **decision topic**.
 | [Incident management](guides/incident-management.md) | PagerDuty, severity, comms, runbooks, postmortem |
 | [Observability & monitoring QA](guides/observability-monitoring-qa.md) | Synthetics, deploy diff, regression feedback loop |
 
-→ Full index (16 guides): [guides/README.md](guides/README.md)
+→ Full index (16 guides): [guides/index.md](guides/index.md)
 
 ---
 
@@ -109,7 +109,7 @@ Browse by **role**, **lifecycle phase**, **pillar**, or **decision topic**.
 |-----|----------|
 | [GOVERNANCE.md](GOVERNANCE.md) | Roles, RACI, tiers, artifact lifecycle |
 | [processes/overview.md](processes/overview.md) | Value stream, phase gates |
-| [sops/](sops/README.md) | 12 reference procedures |
+| [sops/](sops/index.md) | 12 reference procedures |
 
 ---
 

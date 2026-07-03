@@ -67,7 +67,7 @@ Customize timelines for your org size, compliance tier, and existing tooling.
 - [Knowledge indexing](./guides/knowledge-indexing-portals) for agent context  
 - Tier model fully enforced ([GOVERNANCE](./GOVERNANCE))  
 - Exception process live ([SOP-012](./sops/SOP-012-exception-handling))  
-- Quarterly review of pitfalls in [decision guides](./guides/README) you adopted  
+- Quarterly review of pitfalls in [decision guides](./guides/index) you adopted  
 
 ## Success metrics (examples)
 
