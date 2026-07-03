@@ -1,0 +1,70 @@
+name: Enforce owner-only commits
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  check-authors:
+    runs-on: ubuntu-latest
+    env:
+      ALLOWED_LOGIN: LukeWilk
+      ALLOWED_EMAIL: lwilk@posteo.net
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Determine commit range
+        id: range
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "BASE=${{ github.event.pull_request.base.sha }}" >> $GITHUB_ENV
+            echo "HEAD=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
+          else
+            echo "BASE=${{ github.event.before }}" >> $GITHUB_ENV
+            echo "HEAD=${{ github.sha }}" >> $GITHUB_ENV
+          fi
+
+      - name: Fetch commits
+        run: |
+          git fetch --no-tags --prune origin ${BASE} ${HEAD} || true
+
+      - name: Verify commit authors are the allowed user
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          bad=0
+          commits=$(git rev-list ${BASE}..${HEAD} || true)
+          if [ -z "$commits" ]; then
+            echo "No commits to check"
+            exit 0
+          fi
+          for c in $commits; do
+            echo "Checking $c"
+            api=$(curl -sS -H "Authorization: token ${GITHUB_TOKEN}" "https://api.github.com/repos/${{ github.repository }}/commits/$c")
+            login=$(echo "$api" | jq -r '.author.login // empty')
+            email=$(echo "$api" | jq -r '.commit.author.email // empty')
+            name=$(echo "$api" | jq -r '.commit.author.name // empty')
+            if [ "$login" = "${{ env.ALLOWED_LOGIN }}" ]; then
+              echo "commit $c by allowed login $login"
+              continue
+            fi
+            if [ "$email" = "${{ env.ALLOWED_EMAIL }}" ] || echo "$email" | grep -qi "${{ env.ALLOWED_LOGIN }}"; then
+              echo "commit $c by allowed email $email"
+              continue
+            fi
+            echo "Unauthorized commit $c: author login=$login email=$email name=$name"
+            bad=1
+          done
+          if [ "$bad" -ne 0 ]; then
+            echo "::error::Unauthorized commits detected"
+            exit 1
+          fi
+
