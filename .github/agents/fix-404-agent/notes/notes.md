@@ -1,0 +1,5 @@
+- Issue: 404 errors on GitHub Pages when using `cleanUrls: true` and direct navigation or refresh.
+- Solution: Disabled `cleanUrls` in `docs/.vitepress/config.ts`.
+- Issue: Local development environment using repository subpath for base, causing broken links.
+- Solution: Dynamically set `base` based on `NODE_ENV`.
+- Prevention: Always test VitePress sites on GitHub Pages with direct URL access to subpages before finalizing configuration.
