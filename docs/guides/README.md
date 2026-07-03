@@ -1,5 +1,10 @@
 # Decision Guides
 
+---
+title: Decision Guides
+description: Collection of decision guides comparing options, pitfalls, and suggested starting points for adoption.
+---
+
 Compare options before you adopt them in **your** project. Record the outcome in **your** repo's ADRs — not here.
 
 Each guide includes:

@@ -1,5 +1,10 @@
 # Standard Operating Procedures (SOPs)
 
+---
+title: Standard Operating Procedures (SOPs)
+description: Index and guidance for Standard Operating Procedures referenced across the repository.
+---
+
 **Reference playbooks only.** These describe how a team *might* operate — customize for your org, tooling, and compliance tier. **Do not implement CI labels, workflows, or automation from this repository.**
 
 Each SOP follows the same structure: purpose, RACI, steps, Definition of Done, SLA.

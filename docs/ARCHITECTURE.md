@@ -1,5 +1,10 @@
 # Enterprise AI-Native Architecture on AWS
 
+---
+title: Enterprise AI-Native Architecture on AWS
+description: Reference architecture and conceptual overview for AI-native systems on AWS.
+---
+
 **Reference architecture — conceptual only.** No deployable artifacts live in this repository.
 
 - **Compare options:** [Decision guides](guides/README.md) (pros, cons, pitfalls)  

@@ -1,5 +1,10 @@
 # Data Governance
 
+---
+title: Data Governance
+description: Conceptual model for data classification, lifecycle, lineage, and AI usage boundaries.
+---
+
 Conceptual model for data classification, lifecycle, lineage, and AI usage boundaries in an AI-native enterprise stack on AWS.
 
 > **Reference template — no production code.**  

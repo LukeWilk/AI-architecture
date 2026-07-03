@@ -1,5 +1,10 @@
 # Identity, Access & Secrets
 
+---
+title: Identity, Access & Secrets
+description: Guidance on workforce identity, CI/workload IAM, application RBAC, and secret lifecycle for AWS.
+---
+
 Conceptual model for workforce identity, CI/workload IAM, application RBAC, and secret lifecycle in an AI-native enterprise stack on AWS.
 
 > **Reference template — no production code.**  
