@@ -3,3 +3,6 @@
 - Issue: Local development environment using repository subpath for base, causing broken links.
 - Solution: Dynamically set `base` based on `NODE_ENV`.
 - Prevention: Always test VitePress sites on GitHub Pages with direct URL access to subpages before finalizing configuration.
+- Issue: Directory-level URLs (e.g., `/guides/`) 404ed on GitHub Pages because `README.md` was generating `README.html` instead of `index.html` (due to `cleanUrls: false`).
+- Solution: Renamed `README.md` to `index.md` in `guides/` and `sops/` directories and updated all internal links.
+- Prevention: Always use `index.md` for directory index pages in VitePress when deploying to GitHub Pages without a 404 redirect hack.
