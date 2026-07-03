@@ -1,5 +1,10 @@
 # Process Overview
 
+---
+title: Process Overview
+description: Reference value stream mapping lifecycle phases to processes and SOPs.
+---
+
 **Reference value stream** — map phases to your toolchain. Pitfalls and tool alternatives live in [decision guides](../guides/README.md).
 
 ---

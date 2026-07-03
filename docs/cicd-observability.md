@@ -1,5 +1,10 @@
 # CI/CD & Observability — Monitoring as QA
 
+---
+title: CI/CD & Observability
+description: Pipeline design, automated scans, and monitoring-as-quality practices for CI/CD on AWS.
+---
+
 Pipeline design on AWS, automated scans at every stage, and a closed-loop observability system that treats production monitoring as continuous QA.
 
 > **Reference template — no production code in this repo.**  

@@ -1,5 +1,10 @@
 # Developer Workflow — AI-Assisted Spec-Driven Development
 
+---
+title: Developer Workflow
+description: Local setup, tooling, and the day-to-day loop for AI-assisted spec-driven development on AWS.
+---
+
 Local setup, tooling, and the day-to-day loop for high-velocity AI-assisted coding on AWS.
 
 > **Reference template — no production code in this repo.**  

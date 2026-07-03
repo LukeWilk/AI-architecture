@@ -1,5 +1,10 @@
 # How to Use This Repository
 
+---
+title: How to Use this Repository
+description: Instructions for browsing, developing, and previewing the docs; recommended workflows for local and GitHub Pages usage.
+---
+
 ## What this is
 
 A **reference template** of best practices for using AI in enterprise software delivery on AWS. It is documentation and decision guidance only.

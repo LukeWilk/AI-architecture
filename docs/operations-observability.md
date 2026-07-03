@@ -1,5 +1,10 @@
 # Operations, Observability & Incidents
 
+---
+title: Operations, Observability & Incidents
+description: Umbrella view of runtime operations, signals, dashboards, incidents, and reporting.
+---
+
 Umbrella view of runtime operations: signals, dashboards, incidents, and reporting — separate from but connected to **monitoring-as-QA**.
 
 > **Reference template — no production code.**

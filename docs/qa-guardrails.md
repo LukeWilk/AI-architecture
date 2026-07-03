@@ -1,5 +1,10 @@
 # QA & AI Guardrails — Automated Quality Only
 
+---
+title: QA & AI Guardrails
+description: Automated quality assurance and guardrails for AI-augmented development and CI.
+---
+
 Quality assurance is fully automated for test **execution**. Humans review test **design** in PRs and accept staging behavior — see [GOVERNANCE.md](GOVERNANCE.md).
 
 > **Reference template — no production code in this repo.**  
