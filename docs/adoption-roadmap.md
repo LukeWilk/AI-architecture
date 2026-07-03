@@ -80,4 +80,4 @@ Customize timelines for your org size, compliance tier, and existing tooling.
 
 ## Related
 
-- [Glossary](./glossary) · [Documentation map](./README) · [Architecture](./ARCHITECTURE)
+- [Glossary](./glossary) · [Documentation map](./documentation-map) · [Architecture](./ARCHITECTURE)

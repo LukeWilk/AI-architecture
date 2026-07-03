@@ -61,4 +61,4 @@ features:
 | IAM, RBAC, secrets? | [Identity, access & secrets](/guides/identity-access-secrets) |
 | Data in AI prompts? | [Data governance](/guides/data-governance) |
 
-Terms: [Glossary](/glossary) · Full index: [Documentation map](/README)
+Terms: [Glossary](/glossary) · Full index: [Documentation map](/documentation-map)
