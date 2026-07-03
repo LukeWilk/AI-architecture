@@ -40,11 +40,13 @@ jobs:
       - name: Normalize directory index files
         # Some static hosts (or downstream tooling) expect an index.html per
         # directory. VitePress emits README.html for directory pages; copy
-        # README.html -> index.html so URLs like /guides/ and /sops/ resolve
-        # correctly when served from GitHub Pages.
+        # README.html -> index.html for nested directories so URLs like
+        # /guides/ and /sops/ resolve correctly when served from GitHub Pages.
+        # Skip the site root so the real homepage (docs/index.md) is not
+        # overwritten by docs/README.md.
         run: |
           set -euo pipefail
-          find docs/.vitepress/dist -type f -name 'README.html' -print0 | while IFS= read -r -d '' f; do
+          find docs/.vitepress/dist -mindepth 2 -type f -name 'README.html' -print0 | while IFS= read -r -d '' f; do
             dir="$(dirname "$f")"
             cp -f "$f" "$dir/index.html"
           done

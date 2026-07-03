@@ -44,7 +44,7 @@ Open `http://localhost:5173` in your browser.
 4. **By role** → [Role perspectives](perspectives/)
 5. **AI tools & artifacts** → [AI toolkit catalog](ai-toolkit.md)
 6. **Defining team process** → [Governance](GOVERNANCE.md) + [SOPs](sops/README.md)
-7. **Terms** → [Glossary](glossary.md) · [Documentation map](README.md)
+7. **Terms** → [Glossary](glossary.md) · [Documentation map](documentation-map.md)
 
 ## How to adopt in your project
 
