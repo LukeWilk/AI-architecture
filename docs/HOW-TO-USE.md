@@ -40,10 +40,10 @@ Open `http://localhost:5173` in your browser.
 
 1. **New to the model** → [Adoption roadmap](adoption-roadmap.md) or [Architecture overview](ARCHITECTURE.md)
 2. **By lifecycle phase** → [Lifecycle hubs](lifecycle/)
-3. **Choosing a tool or pattern** → [Decision guides](guides/README.md)
+3. **Choosing a tool or pattern** → [Decision guides](guides/index.md)
 4. **By role** → [Role perspectives](perspectives/)
 5. **AI tools & artifacts** → [AI toolkit catalog](ai-toolkit.md)
-6. **Defining team process** → [Governance](GOVERNANCE.md) + [SOPs](sops/README.md)
+6. **Defining team process** → [Governance](GOVERNANCE.md) + [SOPs](sops/index.md)
 7. **Terms** → [Glossary](glossary.md) · [Documentation map](documentation-map.md)
 
 ## How to adopt in your project
@@ -70,5 +70,5 @@ Open `http://localhost:5173` in your browser.
 
 - **"Recommended for most teams"** — sensible default, not a mandate
 - **"Primary / optional"** — adoption order, not exclusivity
-- **Pitfall callouts** — in each [decision guide](guides/README.md)
+- **Pitfall callouts** — in each [decision guide](guides/index.md)
 - Diagrams illustrate concepts; your topology will differ

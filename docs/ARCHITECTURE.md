@@ -7,9 +7,9 @@ description: Reference architecture and conceptual overview for AI-native system
 
 **Reference architecture — conceptual only.** No deployable artifacts live in this repository.
 
-- **Compare options:** [Decision guides](guides/README.md) (pros, cons, pitfalls)  
+- **Compare options:** [Decision guides](guides/index.md) (pros, cons, pitfalls)  
 - **Who decides:** [GOVERNANCE.md](GOVERNANCE.md) (adapt to your org)  
-- **How to operate:** [processes/overview.md](processes/overview.md) · [sops/](sops/README.md) (reference playbooks)
+- **How to operate:** [processes/overview.md](processes/overview.md) · [sops/](sops/index.md) (reference playbooks)
 
 ---
 
@@ -89,7 +89,7 @@ flowchart LR
 
 ## 3. Tooling: primary vs optional
 
-See [guides/README.md](guides/README.md) for full alternatives and pitfalls. Summary:
+See [guides/index.md](guides/index.md) for full alternatives and pitfalls. Summary:
 
 | Category | Often start with | Also consider |
 |----------|------------------|---------------|
@@ -307,6 +307,6 @@ flowchart TB
 
 - [GOVERNANCE.md](GOVERNANCE.md) — RACI, tiers, artifact lifecycle
 - [processes/overview.md](processes/overview.md) — value stream, ceremonies
-- [sops/README.md](sops/README.md) — all procedures
+- [sops/index.md](sops/index.md) — all procedures
 - [data-governance.md](data-governance.md) · [operations-observability.md](operations-observability.md)
 - [planning-and-adr.md](planning-and-adr.md) · [developer-workflow.md](developer-workflow.md) · [qa-guardrails.md](qa-guardrails.md) · [cicd-observability.md](cicd-observability.md)
