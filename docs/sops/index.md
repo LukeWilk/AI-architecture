@@ -9,7 +9,7 @@ description: Index and guidance for Standard Operating Procedures referenced acr
 
 Each SOP follows the same structure: purpose, RACI, steps, Definition of Done, SLA.
 
-**Before customizing:** read the relevant [decision guide](../guides/README.md) for alternatives and pitfalls.
+**Before customizing:** read the relevant [decision guide](../guides/index.md) for alternatives and pitfalls.
 
 1. **Purpose & scope**
 2. **Roles (RACI)**

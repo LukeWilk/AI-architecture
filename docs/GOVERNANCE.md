@@ -2,7 +2,7 @@
 
 **Reference model** — adapt roles, tiers, and gates to your organization. Record **your** choices in **your** project's ADRs.
 
-Roles, decision rights, service tiers, and artifact lifecycle. SOPs in [sops/README.md](sops/README.md) are **playbooks to customize**, not procedures executed from this repo.
+Roles, decision rights, service tiers, and artifact lifecycle. SOPs in [sops/index.md](sops/index.md) are **playbooks to customize**, not procedures executed from this repo.
 
 **Compare governance approaches:** [Guide: Human-in-the-loop](guides/human-in-the-loop-governance.md)
 
@@ -167,5 +167,5 @@ flowchart TD
 ## Related documents
 
 - [Process overview](processes/overview.md)
-- [SOP index](sops/README.md)
+- [SOP index](sops/index.md)
 - [Architecture](ARCHITECTURE.md)

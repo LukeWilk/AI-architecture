@@ -76,7 +76,7 @@ Use RACI or DACI in **your** handbook; this repo provides a reference RACI in GO
 
 Six phase gates (G0–G5) with tier-scoped approvers; document in team handbook; record **your** choices in **your** ADRs.
 
-Reference procedures: [SOP index](../sops/README.md).
+Reference procedures: [SOP index](../sops/index.md).
 
 ---
 
