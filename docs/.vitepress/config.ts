@@ -15,7 +15,11 @@ import { nav, sidebar } from './sidebar'
  * '/AI-architecture/'.
  */
 const repo = process.env.GITHUB_REPOSITORY?.split('/')?.[1] || 'AI-architecture'
-const base = process.env.BASE_PATH || `/${repo}/`
+/**
+ * During local development (npm run docs:dev), we want the site at the root '/'.
+ * For production builds (GitHub Pages), we need the repository subpath.
+ */
+const base = process.env.BASE_PATH || (process.env.NODE_ENV === 'production' ? `/${repo}/` : '/')
 
 export default withMermaid(
   defineConfig({
@@ -23,7 +27,9 @@ export default withMermaid(
     description: 'Reference template for AI-native enterprise software on AWS',
     lang: 'en-US',
     base,
-    cleanUrls: true,
+    // Disable cleanUrls for GitHub Pages compatibility unless a 404.html redirect is used.
+    // This prevents 404s when refreshing subpages or visiting links directly in a private window.
+    cleanUrls: false,
     lastUpdated: true,
     appearance: true,
 
