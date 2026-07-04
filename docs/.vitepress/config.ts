@@ -14,12 +14,15 @@ import { nav, sidebar } from './sidebar'
  * Example: for https://lukewilk.github.io/AI-architecture/ the computed base is
  * '/AI-architecture/'.
  */
-const repo = process.env.GITHUB_REPOSITORY?.split('/')?.[1] || 'AI-architecture'
-/**
- * During local development (npm run docs:dev), we want the site at the root '/'.
- * For production builds (GitHub Pages), we need the repository subpath.
- */
-const base = process.env.BASE_PATH || (process.env.NODE_ENV === 'production' ? `/${repo}/` : '/')
+// Compute site `base` used for asset and link prefixes.
+//
+// Default to the site root ('/') which is safe for local dev and for hosting
+// on a domain root (Netlify, Vercel, custom domain). If you deploy to GitHub
+// Pages under the repo subpath, set the BASE_PATH env var (for example
+// '/AI-architecture/') in your CI/build workflow so assets are prefixed
+// correctly. This avoids unexpected 404s for CSS/JS when the deployment
+// platform doesn't provide GITHUB_REPOSITORY at build time.
+const base = process.env.BASE_PATH ?? '/'
 
 export default withMermaid(
   defineConfig({
