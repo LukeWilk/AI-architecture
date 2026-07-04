@@ -50,11 +50,15 @@ jobs:
             echo "gh-pages branch doesn't exist; creating new orphan branch"
             git clone --depth 1 "$REPO_URL" "$TMP"
             cd "$TMP"
+            # Configure a known author before making commits
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git checkout --orphan gh-pages || true
             git rm -rf . || true
             git commit --allow-empty -m "chore: create gh-pages branch" || true
           fi
 
+          # Ensure commits use the bot identity when updating preview directories
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
@@ -72,7 +76,7 @@ jobs:
           fi
 
           # copy built site into target dir
-          PUBLISH_DIR="docs/.vitepress/dist"
+          PUBLISH_DIR="${GITHUB_WORKSPACE}/docs/.vitepress/dist"
           if [ ! -d "$PUBLISH_DIR" ]; then
             echo "Build output not found: $PUBLISH_DIR"
             exit 1
@@ -80,7 +84,7 @@ jobs:
 
           rm -rf "$TARGET_DIR"
           mkdir -p "$TARGET_DIR"
-          cp -r "$PWD/../../$PUBLISH_DIR"/* "$TARGET_DIR/"
+          cp -r "$PUBLISH_DIR"/* "$TARGET_DIR/"
 
           git add -A
           if git diff --staged --quiet; then
