@@ -1,0 +1,100 @@
+name: PR preview deploy
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site (or skip on closed)
+        if: github.event.action != 'closed'
+        env:
+          BASE_PATH: "/${{ github.event.repository.name }}/pr-${{ github.event.number }}/"
+        run: |
+          echo "Building site with BASE_PATH=$BASE_PATH"
+          BASE_PATH="$BASE_PATH" npm run docs:build
+
+      - name: Deploy preview to gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          OWNER=$(echo "$GITHUB_REPOSITORY" | cut -d'/' -f1)
+          REPO=$(echo "$GITHUB_REPOSITORY" | cut -d'/' -f2)
+          PR_NUM=${{ github.event.number }}
+          TARGET_DIR="pr-${PR_NUM}"
+          REPO_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+
+          # Prepare a temp clone of gh-pages (create branch if missing)
+          TMP=$(mktemp -d)
+          echo "Cloning gh-pages branch into $TMP"
+          if git clone --depth 1 --branch gh-pages "$REPO_URL" "$TMP" 2>/dev/null; then
+            echo "Cloned existing gh-pages branch"
+            cd "$TMP"
+          else
+            echo "gh-pages branch doesn't exist; creating new orphan branch"
+            git clone --depth 1 "$REPO_URL" "$TMP"
+            cd "$TMP"
+            git checkout --orphan gh-pages || true
+            git rm -rf . || true
+            git commit --allow-empty -m "chore: create gh-pages branch" || true
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [ "${{ github.event.action }}" = "closed" ]; then
+            echo "PR #${PR_NUM} closed — removing preview directory if it exists"
+            if [ -d "$TARGET_DIR" ]; then
+              rm -rf "$TARGET_DIR"
+              git add -A
+              git commit -m "chore: remove PR ${PR_NUM} preview" || echo "no changes to commit"
+              git push origin gh-pages
+            else
+              echo "No preview directory to remove"
+            fi
+            exit 0
+          fi
+
+          # copy built site into target dir
+          PUBLISH_DIR="docs/.vitepress/dist"
+          if [ ! -d "$PUBLISH_DIR" ]; then
+            echo "Build output not found: $PUBLISH_DIR"
+            exit 1
+          fi
+
+          rm -rf "$TARGET_DIR"
+          mkdir -p "$TARGET_DIR"
+          cp -r "$PWD/../../$PUBLISH_DIR"/* "$TARGET_DIR/"
+
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to preview site (files identical)"
+          else
+            git commit -m "chore: update PR ${PR_NUM} preview (build $GITHUB_RUN_NUMBER)" || true
+            git push origin gh-pages
+          fi
+
+          PREVIEW_URL="https://${OWNER}.github.io/${REPO}/${TARGET_DIR}/"
+          echo "Preview available at: $PREVIEW_URL"
+
+          # Post a comment on the PR with the preview URL
+          api_url="https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${PR_NUM}/comments"
+          curl -sS -H "Authorization: token ${GITHUB_TOKEN}" -H "Accept: application/vnd.github+json" \
+            -d "{\"body\":\"PR preview available: ${PREVIEW_URL}\"}" "$api_url" >/dev/null
+
